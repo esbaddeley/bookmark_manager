@@ -1,0 +1,23 @@
+It shows a list of links from the database
+
+As a Makers Student
+So that I can see my bookmarks
+I want to view a list of links
+
+New links can be added
+
+As a Makers Student
+So I can bookmark future sites
+I want to be able to add a new link
+
+Links can be tagged
+
+As a Makers Student
+So that I can know what a link is about
+I want to be able to tag a link
+
+Links can be filtered by a tag
+
+As a Makers Student
+So that I can find relevant links
+I want to be able to filter based on tags
