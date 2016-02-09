@@ -1,4 +1,4 @@
-require 'link'
+require './lib/link'
 
 feature 'display_link' do
 
