@@ -3,6 +3,7 @@ ENV["RACK_ENV"] ||= "development"
 require 'sinatra/base'
 require './lib/link'
 
+
 class BookmarkManager < Sinatra::Base
 
   get '/' do
@@ -27,5 +28,5 @@ class BookmarkManager < Sinatra::Base
 
 
 
-run if app_file == $0
+  run! if app_file == $0
 end
