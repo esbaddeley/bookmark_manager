@@ -1,3 +1,5 @@
+require 'link'
+
 feature 'display_link' do
 
   scenario 'a user can see a link' do
