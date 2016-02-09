@@ -1,4 +1,13 @@
 
-<ul id='links' >
- <li> id='links'> Makers Academy </li>
- </ul>
+<ul id='links'>
+  <% @links.each do |link| %>
+  <li>
+     Name: <%= link.name %>
+     URL: <%= link.url    %>
+   </li>
+  <% end%>
+</ul>
+
+<form action='/links/new' method='GET'>
+  <input type=submit value='Add a new link'>
+</form>
