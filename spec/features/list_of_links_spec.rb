@@ -1,4 +1,5 @@
 require 'spec_helper'
+require './app/models/link'
 
 # USER STORY ONE
 # As a USER
@@ -9,7 +10,7 @@ feature 'List of website links' do
 
   scenario 'it displays links' do
     Link.create(url: 'http://www.patience-is-a-virtue.org/', name: 'Hold on...')
-    vist '/links'
+    visit '/links'
     expect(page.status_code).to eq 200
     within 'ul#links' do
       expect(page).to have_content('Hold on...')
