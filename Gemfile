@@ -9,4 +9,4 @@ gem 'dm-migrations'
 gem 'capybara'
 gem 'rspec'
 gem 'rspec-sinatra'
-
+gem 'sinatra'
