@@ -44,16 +44,22 @@ class BookmarkManager < Sinatra::Base
   end
 
   get '/signup' do
+    @invalidpassword = session[:invalidpassword]
     erb :signup
   end
 
   post '/signup' do
-
-    user = User.create(email: params['Email'])
+    user = User.new(email: params['Email'])
     user.password = params['Password']
-    user.save!
-    session[:id] = user.id
-    redirect '/links'
+    user.password_confirmation = params['Password_confirmation']
+    if user.valid?
+      user.save!
+      session[:id] = user.id
+      redirect '/links'
+    else
+      session[:invalidpassword] = true
+      redirect '/signup'
+    end
   end
 
   # start the server if ruby file executed directly
