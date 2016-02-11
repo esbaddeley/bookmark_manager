@@ -21,9 +21,11 @@ class BookmarkManager < Sinatra::Base
   end
 
   post '/links' do
-    tag = Tag.create(category: params['Tag'])
+    tags = params['Tag'].downcase.gsub(' ','').split(",")
     link = Link.create(url: params['URL'], name: params['Name'])
-    LinkTag.create(link: link, tag: tag)
+    tags.each do |tag|
+      LinkTag.create(link: link, tag: Tag.create(category: tag))
+    end
     redirect ('/links')
   end
 

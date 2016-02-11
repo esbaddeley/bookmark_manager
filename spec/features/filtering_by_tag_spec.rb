@@ -15,4 +15,19 @@ feature 'Filtering by tags' do
     expect(page).to_not have_content('Google')
     expect(page).to have_content('Bubble Shooter')
   end
+
+  scenario 'a user can add multiple tags to a link' do
+    visit '/links'
+    click_button('Add Link')
+    fill_in('Name', with: 'Google')
+    fill_in('URL', with: 'http://www.google.com')
+    fill_in('Tag', with: 'search, engine')
+    click_button('Submit')
+    visit '/tags/engine'
+    within 'ul#links' do
+      expect(page).to have_content('Google')
+    end
+  end
+
+
 end
