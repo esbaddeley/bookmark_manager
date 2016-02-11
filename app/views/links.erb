@@ -5,6 +5,7 @@
     <li>
       Name: <%= link.name %>
       URL: <%= link.url %>
+      Tags: <%= link.tags.map {|tag| tag.category } %>
     </li>
   <% end %>
 </ul>
