@@ -37,11 +37,8 @@ class BookmarkManager < Sinatra::Base
 
   get '/tags/:category' do
     category = params[:category]
-    tag = Tag.first(category: 'bubbles')
-    @links = Link.all(tags: tag)
-    # @links = Link.select do |link|
-    #   link.tags.all(category: category)
-    # end
+    tag = Tag.first(category: category)
+    @links = tag ? tag.links : []
     erb :links
   end
 
