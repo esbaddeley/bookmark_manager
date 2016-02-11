@@ -10,7 +10,7 @@ class User
   property :password_hash, String, length: 100
   attr_accessor :password_confirmation
 
-  validates_confirmation_of :password_hash, confirm: :password_confirmation
+  validates_confirmation_of :password
 
   def password
     @password ||= Password.new(password_hash)
