@@ -17,7 +17,14 @@ feature 'User sign up' do
     fill_in('Password_confirmation', with: 'notmysecurepassword')
     click_button('Submit')
     expect(User.count).to eq 0
+    expect(page).to have_content "Passwords entered do not match, please try again"
   end
+
+  scenario 'check flash message not displayed on first page' do
+    visit '/signup'
+    expect(page).to_not have_content "Passwords entered do not match, please try again"
+  end
+
 
 
 end

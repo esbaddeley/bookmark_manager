@@ -1,11 +1,10 @@
 <p>Please enter an email address and password</p>
 <br>
 <form action="/signup" method="POST">
-  Email: <input type=text name=Email>
+  Email: <input type=text name=Email value='<%=flash[:email]%>'>
   Password: <input type=text name=Password>
   Password Confirmation: <input type=text name=Password_confirmation>
   <input type="submit" value='Submit'>
 </form>
-<% if @invalidpassword %>
-  <h1> Passwords entered do not match, please try again <h1>
-<% end %>
+
+<h1> <%= flash[:error] %> </h1>

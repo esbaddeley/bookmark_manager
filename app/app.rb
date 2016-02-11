@@ -1,12 +1,14 @@
 ENV['RACK_ENV'] ||= 'development'
 
 require 'sinatra/base'
+require 'sinatra/flash'
 require_relative 'data_mapper_setup'
 
 class BookmarkManager < Sinatra::Base
 
   enable :sessions
   set :session_secret, 'secretbookmark'
+  register Sinatra::Flash
 
   helpers do
     def current_user
@@ -44,7 +46,6 @@ class BookmarkManager < Sinatra::Base
   end
 
   get '/signup' do
-    @invalidpassword = session[:invalidpassword]
     erb :signup
   end
 
@@ -52,12 +53,12 @@ class BookmarkManager < Sinatra::Base
     user = User.new(email: params['Email'])
     user.password = params['Password']
     user.password_confirmation = params['Password_confirmation']
-    if user.valid?
-      user.save!
+    if user.save
       session[:id] = user.id
       redirect '/links'
     else
-      session[:invalidpassword] = true
+      flash[:error] = "Passwords entered do not match, please try again"
+      flash[:email] = params['Email']
       redirect '/signup'
     end
   end
