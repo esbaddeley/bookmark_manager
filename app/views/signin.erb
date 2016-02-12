@@ -1,0 +1,11 @@
+<p>Please enter your email address and password</p>
+<br>
+<form action="/signin" method="POST">
+  Email: <input type=email name=Email required>
+  Password: <input type=password name=Password>
+  <input type="submit" value='Submit'>
+</form>
+
+<% if flash[:signin_error] %>
+  <h1> <%= flash[:signin_error] %> </h1>
+<% end %>

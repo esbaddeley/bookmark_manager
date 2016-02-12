@@ -13,3 +13,22 @@ def sign_up(email, password, password_confirmation)
   fill_in('Password_confirmation', with: password_confirmation)
   click_button('Submit')
 end
+
+def sign_in(email, password)
+  visit '/signin'
+  fill_in('Email', with: email)
+  fill_in('Password', with: password)
+  click_button('Submit')
+end
+
+def sign_up_and_in
+  visit '/signup'
+  fill_in('Email', with: 'esbaddeley@gmail.com')
+  fill_in('Password', with: 'password')
+  fill_in('Password_confirmation', with: 'password')
+  click_button('Submit')
+  visit '/signin'
+  fill_in('Email', with: 'esbaddeley@gmail.com')
+  fill_in('Password', with: 'password')
+  click_button('Submit')
+end

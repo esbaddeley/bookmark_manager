@@ -2,7 +2,7 @@ feature 'User sign up' do
 
   scenario 'A user can sign up and user count increases' do
     expect{sign_up('myemail@gmail.com', 'mysecurepassword', 'mysecurepassword')}.to change(User, :count)
-    expect(page).to have_content 'Welcome myemail'
+    expect(page).to have_content 'Thanks myemail@gmail.com, you are now signed up'
   end
 
   scenario 'a user enters a mismatching password confirmation' do

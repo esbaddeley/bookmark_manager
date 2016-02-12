@@ -8,6 +8,7 @@ require 'spec_helper'
 feature 'Adding links' do
 
   scenario 'results in the /links page containing that link' do
+    sign_up_and_in
     visit '/links'
     add_link('Point At Your Pointer', 'http://www.pointerpointer.com/', '')
     within 'ul#links' do

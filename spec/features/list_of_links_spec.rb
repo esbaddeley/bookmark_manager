@@ -9,6 +9,7 @@ require './app/models/link'
 feature 'List of website links' do
 
   scenario 'it displays links' do
+    sign_up_and_in
     Link.create(url: 'http://www.patience-is-a-virtue.org/', name: 'Hold on...')
     visit '/links'
     expect(page.status_code).to eq 200
