@@ -8,11 +8,7 @@ feature 'Adding tages to a link' do
 
   scenario 'when a user adds a tag it is added to the link' do
     visit '/links'
-    click_button('Add Link')
-    fill_in('Name', with: 'Google')
-    fill_in('URL', with: 'http://www.google.com')
-    fill_in('Tag', with: 'Search')
-    click_button('Submit')
+    add_link('Google', 'http://www.google.com', 'Search')
     within 'ul#links' do
       expect(page).to have_content('search')
     end
@@ -20,11 +16,7 @@ feature 'Adding tages to a link' do
 
   scenario 'a user can add multiple tags to a link' do
     visit '/links'
-    click_button('Add Link')
-    fill_in('Name', with: 'Google')
-    fill_in('URL', with: 'http://www.google.com')
-    fill_in('Tag', with: 'Search, Engine')
-    click_button('Submit')
+    add_link('Google', 'http://www.google.com', 'Search, Engine')
     within 'ul#links' do
       expect(page).to have_content('search')
       expect(page).to have_content('engine')

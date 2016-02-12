@@ -9,10 +9,7 @@ feature 'Adding links' do
 
   scenario 'results in the /links page containing that link' do
     visit '/links'
-    click_button('Add Link')
-    fill_in('Name', with: 'Point At Your Pointer')
-    fill_in('URL', with: 'http://www.pointerpointer.com/')
-    click_button('Submit')
+    add_link('Point At Your Pointer', 'http://www.pointerpointer.com/', '')
     within 'ul#links' do
       expect(page).to have_content('Point At Your Pointer')
     end

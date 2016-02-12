@@ -1,10 +1,16 @@
 <p>Please enter an email address and password</p>
 <br>
 <form action="/signup" method="POST">
-  Email: <input type=text name=Email value='<%=flash[:email]%>'>
-  Password: <input type=text name=Password>
-  Password Confirmation: <input type=text name=Password_confirmation>
+  Email: <input type=email name=Email value='<%=flash[:email]%>' required>
+  Password: <input type=password name=Password>
+  Password Confirmation: <input type=password name=Password_confirmation>
   <input type="submit" value='Submit'>
 </form>
 
-<h1> <%= flash[:error] %> </h1>
+<% if flash[:errors] && !flash[:errors].empty? %>
+  <ul id ='errors'>
+    <% flash[:errors].each do |error| %>
+    <li> <%= error %></li>
+  <% end %>
+  </ul>
+<% end %>
